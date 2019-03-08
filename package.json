@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:howdy39/lighthouse-ci.git",
   "author": "howdy39 <tatsuya.howdy@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lighthouse": "^4.2.0"
+  }
 }
