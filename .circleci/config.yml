@@ -36,3 +36,14 @@ workflows:
                 - master
     jobs:
       - lighthouse
+  manual_workflow:
+    jobs:
+      - hold:
+          type: approval
+          filters:
+            branches:
+              only:
+                - master # master以外をdeployするときはbranchesの設定を外す
+      - lighthouse:
+          requires:
+            - hold
