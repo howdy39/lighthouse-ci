@@ -5,6 +5,7 @@
   "author": "howdy39 <tatsuya.howdy@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "lighthouse": "^4.2.0"
+    "lighthouse": "^4.2.0",
+    "request": "^2.88.0"
   }
 }
