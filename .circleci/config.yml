@@ -1,0 +1,38 @@
+version: 2
+jobs:
+  lighthouse:
+    docker:
+      - image: circleci/node:8-browsers
+
+    steps:
+      - run:
+          name: Debug
+          command: npm -v;yarn -v;node -v
+
+      - checkout
+
+      - restore_cache:
+          keys:
+          - dependencies-{{ checksum "yarn.lock" }}
+
+      - run: yarn --pure-lockfile
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: dependencies-{{ checksum "yarn.lock" }}
+
+      - run: yarn run start
+
+workflows:
+  version: 2
+  scheduled_workflow:
+    triggers:
+      - schedule:
+          cron: "0 1 * * *" # UTCで記述。この場合は朝10時
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - lighthouse
