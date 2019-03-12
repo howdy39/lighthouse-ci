@@ -4,6 +4,8 @@ jobs:
     docker:
       - image: circleci/node:8-browsers
 
+    working_directory: ~/repo
+
     steps:
       - run:
           name: Debug
