@@ -35,14 +35,14 @@ workflows:
           filters:
             branches:
               only:
-                - master # master以外をdeployするときはbranchesの設定を外す
+                - master
       - lighthouse:
           requires:
             - hold
   scheduled_workflow:
     triggers:
       - schedule:
-          cron: "0 * * * *" # UTCで記述。この場合は朝10時
+          cron: "0 * * * *" # UTC, every hour
           filters:
             branches:
               only:

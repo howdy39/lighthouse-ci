@@ -1,8 +1,13 @@
 const lighthouse = require('./lighthouse.js');
 const request = require('request');
-const scorePromise = lighthouse.getLighthouseScore('https://techthetoaster.stores.jp/')
+
+const TARGET_URL = process.env.TARGET_URL;
+const WEBHOOK_URL = process.env.WEBHOOK_URL;
+console.log(TARGET_URL);
+console.log(WEBHOOK_URL);
+
+const scorePromise = lighthouse.getLighthouseScore(TARGET_URL)
 scorePromise.then((score) => {
-  console.log(score);
   const message = {
     performance: score.Performance,
     accessibility: score.Accessibility,
@@ -12,7 +17,7 @@ scorePromise.then((score) => {
   };
 
   const options = {
-    uri: "https://script.google.com/macros/s/AKfycbyMw1wxBBGqYolnrTFTwGIx63DKBQSS-ZKvscZuJTgtthmN1CcI/exec",
+    uri: WEBHOOK_URL,
     headers: {
       "Content-type": "application/json",
     },
