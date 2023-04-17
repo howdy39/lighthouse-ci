@@ -8,7 +8,7 @@
     "start": "node ./scripts/index.js"
   },
   "dependencies": {
-    "lighthouse": "5.0.0",
+    "lighthouse": "10.1.1",
     "request": "2.88.0"
   }
 }
